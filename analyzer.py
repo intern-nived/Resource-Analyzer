@@ -13,6 +13,13 @@ from tkinter import filedialog
 print("SELECT PROJECT FOLDER:")
 path = filedialog.askdirectory()
 
+if(path == ''):
+    print("INVALID PATH! try again...")
+    quit()
+else:
+    print(".")
+    print(".")
+    print("SCANNING FILES...")
 #Extarct Texts from all the documents present in the project folder
 textData = []
 for dirpath, subdirs, files in os.walk(path):
@@ -26,8 +33,15 @@ for dirpath, subdirs, files in os.walk(path):
 
         if file.endswith(".docx"):
             textData.append(docxpy.process(file))         # Extarct Texts from Docx files
-
-
+print(".")
+print(".")
+if(len(textData)==0):
+    print("NO RELEVANT DATA FOUND! please try with texual data only...")
+    quit()
+else:    
+    print("PROCESSING FILES...")
+print(".")
+print(".")
 #Creating DataFrame for the Extracted Texts
 df = pd.DataFrame(textData, columns=['ExtractedText'])
 
@@ -75,4 +89,4 @@ plt.tight_layout()
 plt.suptitle("Project Resource Analysis:")
 plt.savefig('./output.png')
 plt.show()
-
+print("OUTPUT SAVED...")
