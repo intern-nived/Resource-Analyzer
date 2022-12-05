@@ -11,7 +11,8 @@ Step 1: install the required packages
   pip install -r requirements.txt
 ```
 
-Step 2: run the below code in terminal or **Double-Click run.bat file**
+Step 2: run the below code in terminal
 ```bash
-  run.bat
+  python analyzer.py
 ```
+Side note: you can also edit and change the path in **run.bat** to make it run without going to the terminal
